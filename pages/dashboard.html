@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard — SmartInvoice</title>
+
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+    <div class="app">
+        
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-logo">
+            Smart<span>Invoice</span>
+        </div>
+
+        <div class="nav-title">Workspace</div>
+
+        <nav class="nav">
+            <button data-page="dashboard" onclick="location.href='dashboard.html'">🏠 &nbsp; Dashboard</button>
+            <button data-page="clients" onclick="location.href='clients.html'">👥 &nbsp; Clients</button>
+            <button data-page="invoices" onclick="location.href='invoices.html'">🧾 &nbsp; Invoices</button>
+            <button data-page="payments" onclick="location.href='payments.html'">💳 &nbsp; Payments</button>
+            <button data-page="expenses" onclick="location.href='expenses.html'">💸 &nbsp; Expenses</button>
+            <button data-page="income" onclick="location.href='income.html'">📈 &nbsp; Income</button>
+            <button data-page="reports" onclick="location.href='reports.html'">📊 &nbsp; Reports</button>
+            <button data-page="settings" onclick="location.href='settings.html'">⚙️ &nbsp; Settings</button>
+        </nav>
+
+        <div class="nav-title">Account</div>
+
+        <nav class="nav">
+            <button onclick="SmartInvoice.logout()">↪ &nbsp; Logout</button>
+        </nav>
+    </aside>
+    
+
+        <main class="main">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button
+                        class="mobile-menu"
+                        onclick="SmartInvoice.toggleSidebar()"
+                    >
+                        ☰
+                    </button>
+
+                    <input
+                        class="search"
+                        type="search"
+                        placeholder="Search clients, invoices, expenses..."
+                    >
+                </div>
+
+                <div class="profile">
+                    <span class="muted">Zahirul Islam</span>
+
+                    <div class="avatar">
+                        ZI
+                    </div>
+                </div>
+            </header>
+
+            <div class="content">
+                
+<div class="titlebar">
+    <div>
+        <h1>Dashboard</h1>
+        <div class="muted">Overview of your business finances</div>
+    </div>
+
+    <button class="btn btn-primary" onclick="SmartInvoice.toast('Create Invoice selected')">
+        + Create Invoice
+    </button>
+</div>
+
+<div class="cards">
+    <div class="card metric">
+        <div>
+            <div class="muted">Total Income</div>
+            <h2>৳128,500</h2>
+            <div class="muted">This month</div>
+        </div>
+        <div class="metric-icon">↗</div>
+    </div>
+
+    <div class="card metric">
+        <div>
+            <div class="muted">Total Expense</div>
+            <h2>৳42,300</h2>
+            <div class="muted">This month</div>
+        </div>
+        <div class="metric-icon">↘</div>
+    </div>
+
+    <div class="card metric">
+        <div>
+            <div class="muted">Paid Invoice</div>
+            <h2>৳86,200</h2>
+            <div class="muted">24 invoices</div>
+        </div>
+        <div class="metric-icon">✓</div>
+    </div>
+
+    <div class="card metric">
+        <div>
+            <div class="muted">Outstanding</div>
+            <h2>৳42,300</h2>
+            <div class="muted">8 invoices</div>
+        </div>
+        <div class="metric-icon">!</div>
+    </div>
+</div>
+
+<div class="grid-2">
+    <div class="card">
+        <h3>Income vs Expense</h3>
+
+        <div class="chart">
+            <div class="bar" style="height:45%"><span>Jan</span></div>
+            <div class="bar" style="height:70%"><span>Feb</span></div>
+            <div class="bar" style="height:55%"><span>Mar</span></div>
+            <div class="bar" style="height:80%"><span>Apr</span></div>
+            <div class="bar" style="height:62%"><span>May</span></div>
+            <div class="bar" style="height:88%"><span>Jun</span></div>
+            <div class="bar" style="height:66%"><span>Jul</span></div>
+            <div class="bar" style="height:76%"><span>Aug</span></div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>Invoice Overview</h3>
+
+        <div class="quick-grid">
+            <div class="quick-card">
+                <b>18</b>
+                <div class="muted">Paid</div>
+            </div>
+
+            <div class="quick-card">
+                <b>6</b>
+                <div class="muted">Pending</div>
+            </div>
+
+            <div class="quick-card">
+                <b>2</b>
+                <div class="muted">Overdue</div>
+            </div>
+
+            <div class="quick-card">
+                <b>4</b>
+                <div class="muted">Draft</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card" style="margin-top:16px">
+    <h3>Recent Invoices</h3>
+
+    <div class="table-card">
+        <table>
+            <thead>
+                <tr>
+                    <th>Invoice</th>
+                    <th>Client</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td><b>INV-1008</b></td>
+                    <td>Rahim Traders</td>
+                    <td>25 Sep 2026</td>
+                    <td>৳18,000</td>
+                    <td><span class="status paid">Paid</span></td>
+                    <td><button class="btn btn-outline" onclick="SmartInvoice.toast('Invoice opened')">View</button></td>
+                </tr>
+
+                <tr>
+                    <td><b>INV-1007</b></td>
+                    <td>ABC Solutions</td>
+                    <td>22 Sep 2026</td>
+                    <td>৳32,500</td>
+                    <td><span class="status pending">Pending</span></td>
+                    <td><button class="btn btn-outline" onclick="SmartInvoice.toast('Invoice opened')">View</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+            </div>
+        </main>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script src="../assets/js/api.js"></script>
+    <script src="../assets/js/auth.js"></script>
+    <script src="../assets/js/app.js"></script>
+</body>
+</html>

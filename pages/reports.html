@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports — SmartInvoice</title>
+
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+    <div class="app">
+        
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-logo">
+            Smart<span>Invoice</span>
+        </div>
+
+        <div class="nav-title">Workspace</div>
+
+        <nav class="nav">
+            <button data-page="dashboard" onclick="location.href='dashboard.html'">🏠 &nbsp; Dashboard</button>
+            <button data-page="clients" onclick="location.href='clients.html'">👥 &nbsp; Clients</button>
+            <button data-page="invoices" onclick="location.href='invoices.html'">🧾 &nbsp; Invoices</button>
+            <button data-page="payments" onclick="location.href='payments.html'">💳 &nbsp; Payments</button>
+            <button data-page="expenses" onclick="location.href='expenses.html'">💸 &nbsp; Expenses</button>
+            <button data-page="income" onclick="location.href='income.html'">📈 &nbsp; Income</button>
+            <button data-page="reports" onclick="location.href='reports.html'">📊 &nbsp; Reports</button>
+            <button data-page="settings" onclick="location.href='settings.html'">⚙️ &nbsp; Settings</button>
+        </nav>
+
+        <div class="nav-title">Account</div>
+
+        <nav class="nav">
+            <button onclick="SmartInvoice.logout()">↪ &nbsp; Logout</button>
+        </nav>
+    </aside>
+    
+
+        <main class="main">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button
+                        class="mobile-menu"
+                        onclick="SmartInvoice.toggleSidebar()"
+                    >
+                        ☰
+                    </button>
+
+                    <input
+                        class="search"
+                        type="search"
+                        placeholder="Search clients, invoices, expenses..."
+                    >
+                </div>
+
+                <div class="profile">
+                    <span class="muted">Zahirul Islam</span>
+
+                    <div class="avatar">
+                        ZI
+                    </div>
+                </div>
+            </header>
+
+            <div class="content">
+                
+<div class="titlebar">
+    <div>
+        <h1>Reports</h1>
+        <div class="muted">Analyze your business performance</div>
+    </div>
+
+    <button class="btn btn-secondary" onclick="SmartInvoice.toast('Report export selected')">
+        Export Report
+    </button>
+</div>
+
+<div class="cards">
+    <div class="card">
+        <div class="muted">Total Income</div>
+        <h2>৳128,500</h2>
+    </div>
+
+    <div class="card">
+        <div class="muted">Total Expenses</div>
+        <h2>৳42,300</h2>
+    </div>
+
+    <div class="card">
+        <div class="muted">Net Income</div>
+        <h2>৳86,200</h2>
+    </div>
+
+    <div class="card">
+        <div class="muted">Outstanding</div>
+        <h2>৳42,300</h2>
+    </div>
+</div>
+
+<div class="card" style="margin-top:16px">
+    <h3>Income vs Expense Report</h3>
+
+    <div class="chart">
+        <div class="bar" style="height:55%"><span>Jan</span></div>
+        <div class="bar" style="height:72%"><span>Feb</span></div>
+        <div class="bar" style="height:60%"><span>Mar</span></div>
+        <div class="bar" style="height:82%"><span>Apr</span></div>
+        <div class="bar" style="height:68%"><span>May</span></div>
+        <div class="bar" style="height:90%"><span>Jun</span></div>
+    </div>
+</div>
+
+            </div>
+        </main>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script src="../assets/js/api.js"></script>
+    <script src="../assets/js/auth.js"></script>
+    <script src="../assets/js/app.js"></script>
+</body>
+</html>
