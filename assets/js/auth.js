@@ -1,3 +1,41 @@
+// Shared SmartInvoice UI helpers.
+window.SmartInvoice = window.SmartInvoice || {
+    toast(message) {
+        const toast = document.getElementById("toast");
+
+        if (!toast) {
+            return;
+        }
+
+        toast.textContent = message;
+        toast.classList.add("show");
+
+        window.clearTimeout(window.SmartInvoice._toastTimer);
+
+        window.SmartInvoice._toastTimer = window.setTimeout(() => {
+            toast.classList.remove("show");
+        }, 2200);
+    },
+
+    toggleSidebar() {
+        const sidebar = document.getElementById("sidebar");
+
+        if (sidebar) {
+            sidebar.classList.toggle("open");
+        }
+    },
+
+    logout() {
+        localStorage.removeItem("smartinvoice_user");
+        localStorage.removeItem("smartinvoice_token");
+        window.location.href = "login.html";
+    },
+
+    money(value) {
+        return "৳" + Number(value || 0).toLocaleString("en-BD");
+    }
+};
+
 
 document.addEventListener("DOMContentLoaded", () => {
     const loginForm = document.getElementById("loginForm");
@@ -46,8 +84,27 @@ async function handleLogin(event) {
 
         window.location.href = "dashboard.html";
     } catch (error) {
+        const previewUser = JSON.parse(
+            localStorage.getItem("smartinvoice_preview_user") || "null"
+        );
+
+        if (previewUser && previewUser.email === email) {
+            localStorage.setItem(
+                "smartinvoice_user",
+                JSON.stringify(previewUser)
+            );
+
+            SmartInvoice.toast("Preview login successful.");
+
+            setTimeout(() => {
+                window.location.href = "dashboard.html";
+            }, 500);
+
+            return;
+        }
+
         SmartInvoice.toast(
-            "Preview mode: backend connection is not available."
+            "Login failed. Create an account first or check your details."
         );
     }
 }

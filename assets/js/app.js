@@ -44,7 +44,8 @@ function initPage() {
         "expenses.html": "expenses",
         "income.html": "income",
         "reports.html": "reports",
-        "settings.html": "settings"
+        "settings.html": "settings",
+        "create-invoice.html": "create-invoice"
     };
 
     const current = pageMap[page];

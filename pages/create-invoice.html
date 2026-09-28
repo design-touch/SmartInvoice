@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Invoice — SmartInvoice</title>
+
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+    <div class="app">
+
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-logo">
+                Smart<span>Invoice</span>
+            </div>
+
+            <div class="nav-title">Workspace</div>
+
+            <nav class="nav">
+                <button data-page="dashboard" onclick="location.href='dashboard.html'">
+                    🏠 &nbsp; Dashboard
+                </button>
+
+                <button data-page="clients" onclick="location.href='clients.html'">
+                    👥 &nbsp; Clients
+                </button>
+
+                <button data-page="invoices" onclick="location.href='invoices.html'">
+                    🧾 &nbsp; Invoices
+                </button>
+
+                <button data-page="payments" onclick="location.href='payments.html'">
+                    💳 &nbsp; Payments
+                </button>
+
+                <button data-page="expenses" onclick="location.href='expenses.html'">
+                    💸 &nbsp; Expenses
+                </button>
+
+                <button data-page="income" onclick="location.href='income.html'">
+                    📈 &nbsp; Income
+                </button>
+
+                <button data-page="reports" onclick="location.href='reports.html'">
+                    📊 &nbsp; Reports
+                </button>
+
+                <button data-page="settings" onclick="location.href='settings.html'">
+                    ⚙️ &nbsp; Settings
+                </button>
+            </nav>
+
+            <div class="nav-title">Account</div>
+
+            <nav class="nav">
+                <button onclick="SmartInvoice.logout()">
+                    ↪ &nbsp; Logout
+                </button>
+            </nav>
+        </aside>
+
+        <main class="main">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button
+                        class="mobile-menu"
+                        onclick="SmartInvoice.toggleSidebar()"
+                    >
+                        ☰
+                    </button>
+
+                    <input
+                        class="search"
+                        type="search"
+                        placeholder="Search clients, invoices, expenses..."
+                    >
+                </div>
+
+                <div class="profile">
+                    <span class="muted">Zahirul Islam</span>
+
+                    <div class="avatar">
+                        ZI
+                    </div>
+                </div>
+            </header>
+
+            <div class="content">
+
+                <div class="titlebar">
+                    <div>
+                        <h1>Create Invoice</h1>
+                        <div class="muted">
+                            Build a professional invoice
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card form">
+                    <div class="form-grid">
+
+                        <div class="field">
+                            <label for="client">Bill To</label>
+                            <select id="client">
+                                <option>Rahim Traders</option>
+                                <option>ABC Solutions</option>
+                                <option>Maya Fashion</option>
+                                <option>Nexus Studio</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="invoiceNumber">Invoice Number</label>
+                            <input
+                                id="invoiceNumber"
+                                value="INV-1009"
+                            >
+                        </div>
+
+                        <div class="field">
+                            <label for="invoiceDate">Invoice Date</label>
+                            <input
+                                id="invoiceDate"
+                                type="date"
+                                value="2026-09-28"
+                            >
+                        </div>
+
+                        <div class="field">
+                            <label for="dueDate">Due Date</label>
+                            <input
+                                id="dueDate"
+                                type="date"
+                                value="2026-10-09"
+                            >
+                        </div>
+
+                        <div class="field full">
+                            <label for="description">Item Description</label>
+                            <input
+                                id="description"
+                                value="Website Design Service"
+                            >
+                        </div>
+
+                        <div class="field">
+                            <label for="quantity">Quantity</label>
+                            <input
+                                id="quantity"
+                                type="number"
+                                value="1"
+                                min="1"
+                            >
+                        </div>
+
+                        <div class="field">
+                            <label for="unitPrice">Unit Price</label>
+                            <input
+                                id="unitPrice"
+                                type="number"
+                                value="25000"
+                                min="0"
+                            >
+                        </div>
+
+                        <div class="field">
+                            <label for="discount">Discount</label>
+                            <input
+                                id="discount"
+                                type="number"
+                                value="0"
+                                min="0"
+                            >
+                        </div>
+
+                        <div class="field">
+                            <label for="tax">Tax</label>
+                            <input
+                                id="tax"
+                                type="number"
+                                value="0"
+                                min="0"
+                            >
+                        </div>
+
+                        <div class="field full">
+                            <label for="notes">Notes / Terms</label>
+                            <textarea
+                                id="notes"
+                                rows="4"
+                                placeholder="Thank you for your business."
+                            ></textarea>
+                        </div>
+                    </div>
+
+                    <div class="card" style="margin-top: 20px;">
+                        <div class="metric">
+                            <div>
+                                <div class="muted">Subtotal</div>
+                                <h2>৳25,000</h2>
+                            </div>
+
+                            <div>
+                                <div class="muted">Grand Total</div>
+                                <h2>৳25,000</h2>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px; flex-wrap: wrap;">
+                        <button
+                            class="btn btn-outline"
+                            onclick="location.href='invoices.html'"
+                        >
+                            Save Draft
+                        </button>
+
+                        <button
+                            class="btn btn-secondary"
+                            onclick="SmartInvoice.toast('Invoice preview opened')"
+                        >
+                            Preview
+                        </button>
+
+                        <button
+                            class="btn btn-primary"
+                            onclick="SmartInvoice.toast('Invoice saved successfully')"
+                        >
+                            Save Invoice
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script src="../assets/js/api.js"></script>
+    <script src="../assets/js/auth.js"></script>
+    <script src="../assets/js/app.js"></script>
+</body>
+</html>
